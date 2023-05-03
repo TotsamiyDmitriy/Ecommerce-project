@@ -1,0 +1,14 @@
+.image {
+  object-fit: cover;
+  width: 100vw;
+  height: 828px;
+}
+.container {
+  width: 80%;
+  display: flex;
+  justify-content: end;
+  .button {
+    position: absolute;
+    top: 70%;
+  }
+}
