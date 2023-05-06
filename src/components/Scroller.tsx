@@ -1,23 +1,30 @@
 import React from 'react';
 import { MiniCard } from '.';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { fetchProducts } from '../redux/mainSlice';
+import styles from '../scss/components/scroller.module.scss';
 
-const Scroller = () => {
-  const dispatch: any = useDispatch();
+const Scroller: React.FC<{}> = ({}) => {
+  const dispatch: any = useAppDispatch();
 
-  const setProductObj = (): void => {
+  React.useEffect(() => {
     dispatch(fetchProducts());
-  };
+  }, []);
 
-  const state = useSelector((main) => ({
-    product: main.product,
+  const state = useAppSelector(({ mainReduser }) => ({
+    product: mainReduser.product,
   }));
-  console.log(state);
 
   return (
-    <div>
-      <MiniCard></MiniCard>
+    <div className={styles.root}>
+      <h2 className={styles.title}>Trending Now</h2>
+      <div className={styles.box}>
+        {state.product.map((val: object, id: number) => (
+          <div className={styles.component} key={`${val}__${id}`}>
+            <MiniCard key={`${val}__${id}`} product={val}></MiniCard>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

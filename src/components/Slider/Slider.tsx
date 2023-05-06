@@ -68,7 +68,7 @@ const Slider: React.FC = (props) => {
   return (
     <div>
       <SlSlider {...settings}>
-        {pp.map((val, id) => {
+        {pp.map((val: object, id: number) => {
           return <Slide key={`${val}__${id}`} {...val}></Slide>;
         })}
       </SlSlider>
