@@ -1,38 +1,15 @@
 import React, { ReactNode } from 'react';
-import styles from '../scss/components/minicard.module.scss';
-
-type ReviewsType = {
-  author: string;
-  date: string;
-  rating: number;
-  title: string;
-  description: string;
-  photos: Array<string>;
-};
-
-type ProductType = {
-  name: string;
-  brandName: string;
-  soldBy: string;
-  rating: number;
-  reviewsCount: number;
-  price: number;
-  offers: number;
-  photos: Array<string>;
-  sizes: Array<string>;
-  colors: Array<string>;
-  category: number;
-  reviews?: Array<ReviewsType>;
-};
+import styles from '../../scss/components/cards/productCard.module.scss';
 
 interface MiniCardType {
   product: ReactNode | any;
+  offerType: string;
 }
 
 const MiniCard: React.FC<MiniCardType> = ({ product }) => {
   return (
     <div className={styles.root}>
-      <div className={styles.container}>
+      <div className={styles.containerProduct}>
         <img className={styles.imageProduct} src={product.photos[0]} alt="" />
         <h3 className={styles.name}>{product.name}</h3>
         <div>
@@ -51,7 +28,7 @@ const MiniCard: React.FC<MiniCardType> = ({ product }) => {
               />
             </svg>
           </span>
-          <div className="priceBlock">
+          <div className={styles.priceBlock}>
             <span className={styles.currentPrice}>{`Rs. ${
               (product.price * product.offers) / 100
             }`}</span>

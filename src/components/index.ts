@@ -1,4 +1,6 @@
 export {default as Header} from './Header/Header'
 export {default as Slider} from './Slider/Slider'
-export {default as MiniCard} from './MiniCard'
-export {default as Scroller} from './Scroller'
+export {default as MiniCard} from './Scrollers/MiniCard'
+export {default as MegaCard} from './Scrollers/MegaCard'
+export {default as Scroller} from './Scrollers/Scroller'
+export {default as TradeSlider} from './TradeSlider/TradeSlider'

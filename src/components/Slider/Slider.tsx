@@ -1,21 +1,26 @@
 import React from 'react';
-import SlSlider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, A11y } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import '../../scss/components/pagination.scss';
+import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
 import Slide from './Slide';
 
 const Slider: React.FC = (props) => {
   const settings = {
-    dots: true,
-    arrows: false,
-    infinite: true,
+    modules: [Navigation, Pagination, Autoplay, A11y],
+    slidesPerView: 1,
+    pagination: { clickable: true },
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      stopOnLastSlide: false,
+      disableOnInteraction: true,
+    },
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    pauseOnHover: true,
   };
 
   const pp = [
@@ -67,11 +72,15 @@ const Slider: React.FC = (props) => {
   ];
   return (
     <div>
-      <SlSlider {...settings}>
+      <Swiper {...settings}>
         {pp.map((val: object, id: number) => {
-          return <Slide key={`${val}__${id}`} {...val}></Slide>;
+          return (
+            <SwiperSlide key={`${val}__${id}`}>
+              <Slide key={`${val}__${id}`} {...val}></Slide>
+            </SwiperSlide>
+          );
         })}
-      </SlSlider>
+      </Swiper>
     </div>
   );
 };
