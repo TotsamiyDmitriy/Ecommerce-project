@@ -1,5 +1,5 @@
 import React from 'react';
-import { MiniCard, MegaCard } from '../';
+import { MiniCard, MegaCard } from '..';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { fetchProducts } from '../../redux/mainSlice';
 import styles from '../../scss/components/scroller.module.scss';
